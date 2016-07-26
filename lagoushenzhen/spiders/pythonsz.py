@@ -22,7 +22,7 @@ class PythonszSpider(CrawlSpider):
 
     # 获取总页数，并对每页进行遍历
     def parse(self, response):
-        print '******', response.url
+        # print '******', response.url
 
         data = {
             'first': 'false',
@@ -45,7 +45,7 @@ class PythonszSpider(CrawlSpider):
             print '**********', total_p, cate_p
 
         #对每一页以post请求，获得每页字典形式的信息
-        for i in range(1,cate_p + 1)[:2]:
+        for i in range(1,cate_p + 1):
             data = {
                 'first': 'false',
                 'pn': i,
@@ -61,14 +61,15 @@ class PythonszSpider(CrawlSpider):
 
             for j in each_message:
 
-
-
                 message = LagoushenzhenItem()
-                message['name'] = j['businessZones']['companyFullName']
-                print '+++++++++++',message['name']
-            # message['company']
-            # message['salary']
-            # message['time']
+
+                message['company'] = j['companyFullName']
+                message['salary'] = j['salary']
+                message['time'] = j['createTime']
+                #print '+++++++++++',message['company'],message['salary'],message['time']
+
+                print '************',message
+
 
 
 

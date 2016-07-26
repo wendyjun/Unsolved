@@ -20,8 +20,8 @@ class LagoushenzhenPipeline(object):
                 )
     def process_item(self, item, spider):
         cur=self.conn.cursor()
-        sql ="""INSERT INTO pythonsz(name,company,salary,tine) VALUES ('%s','%s','%s','%s')""" % (
-                           item['name'].encode('utf8'),
+        sql ="""INSERT INTO pythonsz(company,salary,time) VALUES ('%s','%s','%s')""" % (
+
                            item['company'].encode('utf8'),
                            item['salary'].encode('utf8'),
                            item['time'].encode('utf8'),
